@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	fs, err := funscript.NewFuncscipt("example.funscript")
+	fs, err := funscript.NewFuncscipt("run.funscript")
 	if err != nil {
 		log.Fatal(err)
 	}
