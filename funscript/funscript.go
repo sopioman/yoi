@@ -37,29 +37,29 @@ func NewFuncscipt(folder embed.FS, jsonfile string) (*Funscript, error) {
 }
 
 func (fs *Funscript) Process() {
-	var st Stroke
+	//var st Stroke
 
 	// calculate difference between timestamps
 	// to get stroke duration
-	for i := 1; i < len(fs.Actions); i++ {
-		if fs.Actions[i-1].Timestamp < 0 {
-			continue
-		}
+	// for i := 1; i < len(fs.Actions); i++ {
+	// 	if fs.Actions[i-1].Timestamp < 0 {
+	// 		continue
+	// 	}
 
-		// calculate stroke duration
-		st.Duration = fs.Actions[i].Timestamp - fs.Actions[i-1].Timestamp
+	// 	// calculate stroke duration
+	// 	st.Duration = fs.Actions[i].Timestamp - fs.Actions[i-1].Timestamp
 
-		if st.Duration > 0 {
-			st.Pre = fs.Actions[i-1].Position
-			st.Post = fs.Actions[i].Position
+	// 	if st.Duration > 0 {
+	// 		st.Pre = fs.Actions[i-1].Position
+	// 		st.Post = fs.Actions[i].Position
 
-			st.Range = fs.Range
-			st.Inverted = fs.Inverted
-			st.FullStroke = fs.FullStroke
+	// 		st.Range = fs.Range
+	// 		st.Inverted = fs.Inverted
+	// 		st.FullStroke = fs.FullStroke
 
-			st.Execute()
-		}
-	}
+	// 		st.Execute()
+	// 	}
+	// }
 
 }
 

@@ -1,11 +1,13 @@
 package funscript
 
 type Funscript struct {
-	Version    string             `json:"version"`
-	Inverted   bool               `json:"inverted"`
-	FullStroke bool               `json:"fullstroke"`
-	Range      uint8              `json:"range"`
-	Actions    []FunscriptActions `json:"actions"`
+	Version         string `json:"version"`
+	Inverted        bool   `json:"inverted"`
+	FullStroke      bool   `json:"fullstroke"`
+	Range           uint8  `json:"range"`
+	PositionCurrent int8
+	PositionNew     int8
+	Duration        int32
 }
 
 type FunscriptActions struct {
@@ -13,7 +15,6 @@ type FunscriptActions struct {
 	Timestamp int32 `json:"at"`
 }
 
-//tinyjson:skip
 type Stroke struct {
 	Range      uint8
 	Pre        int8
