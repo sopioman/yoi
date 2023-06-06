@@ -1,32 +1,38 @@
 package funscript
 
 import (
+	"embed"
 	"encoding/json"
-	"fmt"
 	"io"
-	"os"
+
+	"github.com/sopioman/yoi/feedback"
 )
 
-func NewFuncscipt(jsonfile string) (*Funscript, error) {
-	jsonFile, err := os.Open(jsonfile)
+func NewFuncscipt(folder embed.FS, jsonfile string) (*Funscript, error) {
+	jsonFile, err := folder.Open(jsonfile)
 	if err != nil {
 		return nil, err
 	}
 	defer jsonFile.Close()
 
+	//feedback.Blink(7, 200)
 	byteValue, err := io.ReadAll(jsonFile)
 	if err != nil {
+		//feedback.Blink(4, 100)
 		return nil, err
 	}
 
+	feedback.Blink(3, 200)
 	var fs Funscript
 	err = json.Unmarshal(byteValue, &fs)
 	if err == nil {
+		feedback.Blink(5, 100)
 		if fs.Range == 0 {
 			fs.Range = 100
 		}
 	}
 
+	feedback.Blink(10, 200)
 	return &fs, err
 }
 
@@ -58,5 +64,5 @@ func (fs *Funscript) Process() {
 }
 
 func (s *Stroke) Execute() {
-	fmt.Println(s)
+	feedback.Blink(1, s.Duration)
 }

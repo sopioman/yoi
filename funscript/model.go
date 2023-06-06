@@ -13,6 +13,7 @@ type FunscriptActions struct {
 	Timestamp int32 `json:"at"`
 }
 
+//tinyjson:skip
 type Stroke struct {
 	Range      uint8
 	Pre        int8
